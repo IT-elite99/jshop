@@ -1,0 +1,236 @@
+package com.lixiang.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.lixiang.entity.Page;
+import com.lixiang.entity.User;
+import com.lixiang.service.UserService;
+import com.lixiang.util.ConvertParam;
+import com.lixiang.util.InstUtils;
+
+@WebServlet("/user")
+public class UserController extends CrudServlet {
+
+	/**
+	 * QA:质量管理
+	 * 
+	 * 代码评审
+	 * 
+	 * 
+	 * 设计原则：
+	 *  6大原则，
+	 *  	单一职责
+	 * 
+	 * 设计模式
+	 * 
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private UserService service = new UserService();
+	
+	/**
+	 * 调到去新增的页面
+	 * 
+	 * 6亿
+	 * 
+	 * 200
+	 * 
+	 * 
+	 */
+	@Override
+	public void toAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//生产token，防重复提交
+		String token = new Long(System.currentTimeMillis()).toString();
+		request.getSession().setAttribute("token", token);
+		request.setAttribute("token", token);
+		request.setAttribute("map", InstUtils.map);
+		request.getRequestDispatcher("/WEB-INF/view/user-add.jsp").forward(request, response);
+	}
+
+	@Override
+	public void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String token1 = request.getParameter("token");
+		String token2 = (String) request.getSession().getAttribute("token");
+
+		if (token1 == null || "".equals(token1.trim()) || !token1.equals(token2)) {
+			response.sendRedirect(request.getContextPath() + "/tip.jsp");
+			return;
+		}
+		// 处理之后，一定要把session里面的token去掉
+		request.getSession().removeAttribute("token");
+		/*
+		 * try { Thread.sleep(3000); } catch (InterruptedException e) {
+		 * e.printStackTrace(); }
+		 */
+		// 查询的业务
+		// 接收到的查询参数转换成一个User类型的对象
+		// 封装参数
+		// inst=1--->inst
+		// inst=2
+		User user = ConvertParam.convert(User.class, request);
+
+		String[] insts = request.getParameterValues("inst");
+		if (insts != null && insts.length > 0) {
+			StringBuffer sb = new StringBuffer();
+
+			for (String inst : insts) {
+				sb.append(inst).append(",");
+			}
+			// 1,2,
+			user.setInst(sb.toString());
+		}
+
+		// 后台对这些还是要检查（必须）
+		boolean result = service.add(user);
+		// 把操作结果放到会话域中
+		request.getSession().setAttribute("operResult", result);
+		// 跳转到视图页面
+		response.sendRedirect(request.getContextPath() + "/user");
+
+	}
+
+	@Override
+	public void del(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 根据主键来删除用户信息
+
+		String idStr = request.getParameter("id");
+		boolean result = false;
+		// 参数检查
+		// id不能是为null,也不能是空字符串
+		if (idStr != null && !"".equals(idStr.trim())) {
+			try {
+				int id = Integer.parseInt(idStr);
+
+				result = service.deleteById(id);
+
+			} catch (Exception e) {
+				System.out.println("出现了异常");
+			}
+
+		}
+		// 把操作结果放到会话域中
+		request.getSession().setAttribute("operResult", result);
+		// 跳转到视图页面
+		response.sendRedirect(request.getContextPath() + "/user");
+
+	}
+
+	@Override
+	public void batchDel(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String[] ids = request.getParameterValues("id");
+		int count = 0;
+		if (ids != null && ids.length > 0) {
+			for (String idStr : ids) {
+
+				// id不能是为null,也不能是空字符串
+				if (idStr != null && !"".equals(idStr.trim())) {
+					try {
+						int id = Integer.parseInt(idStr);
+
+						boolean result = service.deleteById(id);
+						if (result) {
+							count++;
+						}
+
+					} catch (Exception e) {
+						System.out.println("出现了异常");
+					}
+				}
+			}
+		}
+
+		// 把操作结果放到会话域中
+		request.getSession().setAttribute("operResult", count > 0);
+		// 跳转到视图页面
+		response.sendRedirect(request.getContextPath() + "/user");
+
+	}
+
+	@Override
+	public void toUpdate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 根据主键来删除用户信息
+		String idStr = request.getParameter("id");
+		User user = null;
+		// 参数检查
+		// id不能是为null,也不能是空字符串
+		if (idStr != null && !"".equals(idStr.trim())) {
+			try {
+				int id = Integer.parseInt(idStr);
+
+				user = service.getById(id);
+
+			} catch (Exception e) {
+				System.out.println("出现了异常");
+			}
+
+		}
+
+		if (user == null) {
+			// 把操作结果放到会话域中
+			request.getSession().setAttribute("operResult", false);
+			// 跳转到视图页面
+			response.sendRedirect(request.getContextPath() + "/user");
+		} else {
+			// 如果User不为空，那么这个用户是真是存在，才去真正的修改
+			request.setAttribute("map", InstUtils.map);
+			request.setAttribute("user", user);
+			request.getRequestDispatcher("/WEB-INF/view/user-update.jsp").forward(request, response);
+
+		}
+
+	}
+
+	@Override
+	public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user = ConvertParam.convert(User.class, request);
+
+		String[] insts = request.getParameterValues("inst");
+		if (insts != null && insts.length > 0) {
+			StringBuffer sb = new StringBuffer();
+
+			for (String inst : insts) {
+				sb.append(inst).append(",");
+			}
+			// 1,2,
+			user.setInst(sb.toString());
+		}
+
+		// 后台对这些还是要检查（必须）
+
+		boolean result = service.update(user);
+
+		// 把操作结果放到会话域中
+		request.getSession().setAttribute("operResult", result);
+		// 跳转到视图页面
+		response.sendRedirect("/WEB-INF/view/student-update.jsp");
+	}
+
+	@Override
+	public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 封装参数
+		User param = ConvertParam.convert(User.class, request);
+		// 查询当前页的的数据
+		List<User> users = service.page(param);
+		// 查询总条目数
+		int count = service.count(param);
+		// 把查询的结果放在域里面
+
+		Page page = new Page(param.getPageNo(), param.getPageSize(), count, users);
+
+		request.setAttribute("page", page);
+		request.setAttribute("param", param);
+		// 跳转到视图页面
+		request.getRequestDispatcher("/WEB-INF/view/student-list.jsp").forward(request, response);
+
+	}
+
+}

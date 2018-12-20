@@ -1,0 +1,103 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.tzs.entity.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>修改用户页面</title>
+<%
+	String ctx = request.getContextPath();
+%>
+<script type="text/javascript" src="<%=ctx%>/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="<%=ctx%>/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="<%=ctx%>/js/tips.js"></script>
+<link rel="stylesheet" href="<%=ctx%>/css/public.css">
+
+</head>
+<body>
+	<%
+		User user = (User)request.getAttribute("user");
+		SimpleDateFormat sdf = new SimpleDateFormat();
+	%>
+	<div class="container">
+		<div class="title">修改用户</div> 
+		<div class="content">
+		<form action="<%=ctx %>/user_update_save" id="updateForm">
+		<!-- 使用隐藏域保护id不被修改 -->
+			<input name="id" type="hidden" value="<%=user.getId()%>">
+			<table>
+				<tr>
+					<td class="text_right">用户名：</td>
+					<td class="text_left"><input name="name" type="text" value="<%=user.getName()%>"></td>
+				</tr>
+				<tr>
+					<td class="text_right">密码：</td>
+					<td class="text_left"><input name="password" type="password" value="<%=user.getPassword()%>"></td>
+				</tr>
+				<tr>
+					<td class="text_right">出生日期：</td>
+					<td class="text_left"><input name="birthday" type="date" value="<%=sdf.format(user.getBirthday())%>"></td>
+				</tr>
+				<tr>
+					<td class="text_right"><input type="submit" value="保存"></td>
+					<td class="text_left"><input type="button" value="返回" onclick="location.href='<%=ctx%>/user'"></td>
+				</tr>
+			</table>
+		</form>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript">
+	//自定义正则表达示验证方法
+	$.validator.addMethod("checkName", function(value, element, params) {
+		var reg = /[\u4e00-\u9fa5_a-zA-Z0-9_]{2,7}/;
+		return this.optional(element) || (reg.test(value));
+	}, "请输入正确的用户名！");
+	
+	$.validator.addMethod("checkPwd", function(value, element, params) {
+		var reg = /^\S{6,12}$/
+		return this.optional(element) || (reg.test(value));
+	}, "请输入正确的密码！");
+	
+	$(function() {
+		//对updateForm表单进行校验
+		$("#updateForm").validate({
+			//定义校验规则
+			rules: {
+				name: {
+					required: true,
+					checkName: true
+				},
+				password: {
+					required: true,
+					checkPwd: true
+				},
+				birthday: {
+					require: true
+					
+				}
+
+			},
+			//自定义提示信息
+			messages: {
+				name: {
+					required: "用户名不能为空",
+				},
+				password: {
+					required: "密码不能为空",
+				},
+				birthday: {
+					require: "出生日期不能为空"
+				}
+
+			}
+
+		});
+
+	})
+
+</script>
+</html>

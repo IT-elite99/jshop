@@ -1,0 +1,10 @@
+# db config
+driverClass=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8
+user=root
+password=root
+maxPoolSize=5
+initPoolSize=3
+minPoolSize=2
+timeout=3000
+maxIdleTime=120

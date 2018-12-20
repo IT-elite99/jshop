@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="H:\Java\video\spring视频\springmvc-mall"/>
+		<item value="F:\Javaworkspace\smvc"/>
+		<item value="C:\Users\Administrator\Desktop\spring-crud"/>
+		<item value="H:\Java\J2SE-基础2017\PPT\JavaWeb基础\crud-plus"/>
+		<item value="H:\crud"/>
+		<item value="H:\Java\J2SE-基础2017\jdbc_base"/>
+	</list>
+	<section name="CleanDialogSettings">
+		<item value="500" key="DIALOG_WIDTH"/>
+		<item value="true" key="BUILD_ALL"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="457" key="DIALOG_HEIGHT"/>
+		<item value="433" key="DIALOG_X_ORIGIN"/>
+		<item value="60" key="DIALOG_Y_ORIGIN"/>
+		<item value="true" key="BUILD_NOW"/>
+	</section>
+	<section name="ResourceNavigator">
+		<item value="Aggregate for window 1540605734682" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
+		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="379" key="DIALOG_X_ORIGIN"/>
+		<item value="160" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

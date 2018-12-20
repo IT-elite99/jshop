@@ -1,0 +1,26 @@
+1542100297767	Delete element
+1542181017326	Rename type 'Student'
+1542181059824	Rename type 'StudentDao'
+1542182638289	Move 6 resources to 'WEB-INF'
+1542182668382	Move 6 resources to 'lib'
+1542194470890	Delete element
+1542194486143	Rename type 'A'
+1542252985370	Copy package
+1542253643652	Delete element
+1542253647714	Delete element
+1542254741058	Delete element
+1542273376151	Delete element
+1542273420487	Rename resource 'Login.jsp'
+1542274185344	Rename resource 'index.jsp'
+1542274381425	Rename resource 'ex.jsp'
+1542274412773	Delete element
+1542277506143	Rename resource 'user-list.jsp'
+1542277816236	Delete element
+1542278445587	Move 'head.jsp' to 'WebContent'
+1542278460197	Delete element
+1542279374158	Rename resource 'user-add.jsp'
+1542279839319	Move 'tip.jsp' to 'WebContent'
+1542279852291	Rename resource 'tip.jsp'
+1542279867319	Rename resource 'hit.jsp'
+1542357129456	Rename resource 'user-update.jsp'
+1542359829895	Move 'js' to 'WebContent'

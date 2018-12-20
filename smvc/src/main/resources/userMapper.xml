@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lixiang.dao.UserDao">
+  <select id="getById" resultType="com.lixiang.po.User">
+    select * from user where id = #{id}
+  </select>	
+ <insert id="add">
+  	insert into uset(id,username,password,name,sex,birthday,telephone) values()
+  	values(#{id},#{username},#{password},#{name},#{sex},#{birthday},#{telephone})
+  </insert>
+  
+</mapper>

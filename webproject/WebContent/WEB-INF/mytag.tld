@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
+
+	<description>MyTag 1.0 core library</description>
+	<display-name>MyTag core</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>mytag</short-name>
+	<uri>http://www.mytag.com/jsp/mytag</uri>
+	<!-- 声明一个标签 -->
+	<tag>
+		<!-- 标签名称 -->
+		<name>out</name>
+		<!-- 标签的业务处理 -->
+		<tag-class>com.tzs.tag.OutTag</tag-class>
+		<!-- 声明标签体的类型 
+			empty：空标签体
+			scriptless：允许写el表达式
+		-->
+		<body-content>empty</body-content>
+		
+		<!-- 属性
+			描述问的属性要跟处理类的属性要对应
+		 -->
+		<attribute>
+			<!-- 属性名 -->
+			<name>value</name>
+			<!-- 是否是必须的 -->
+			<required>true</required>
+			<!-- 属性值类型: 允许是用el,jsp表达式-->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+	</tag>
+
+</taglib>

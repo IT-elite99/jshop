@@ -1,0 +1,13 @@
+127.0.0.1 - - [14/Nov/2018:12:10:40 +0800] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [14/Nov/2018:14:57:10 +0800] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:34 +0800] "GET /crud-plus/user HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:34 +0800] "GET /crud-plus HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:36 +0800] "GET /crud-plus/ HTTP/1.1" 200 1665
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:38 +0800] "GET /crud-plus/AuthImage HTTP/1.1" 200 1953
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:38 +0800] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:47 +0800] "GET /crud-plus/login?name=%E8%AB%87%E5%8F%8A%E8%82%AF%E5%AE%9A&password=123123&code= HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:48 +0800] "GET /crud-plus/user HTTP/1.1" 200 9120
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:48 +0800] "GET /crud-plus/static/js/jquery.validate.js HTTP/1.1" 200 48696
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:48 +0800] "GET /crud-plus/static/js/jquery-3.3.1.js HTTP/1.1" 200 271752
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:48 +0800] "GET /crud-plus/static/js/tips.js HTTP/1.1" 200 1622
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:14:59:48 +0800] "GET /crud-plus/static/css/common.css HTTP/1.1" 200 780

@@ -1,0 +1,5 @@
+GitRepositoriesView.GitDirectories=F\:\\Javaworkspace\\jshop\\.git;
+GitRepositoriesView.GitDirectories.relative=jshop\\.git;
+core_autoIgnoreDerivedResources=false
+core_preferredMergeStrategy=jgit-default-mergeStrategy
+eclipse.preferences.version=1

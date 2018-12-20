@@ -1,0 +1,15 @@
+<classpath>
+  <container id="service!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="F:/Javaworkspace/service/WebContent/WEB-INF/lib/commons-dbutils-1.7.jar">
+      <source-attachment-path>C:/Users/Administrator/AppData/Local/Temp/.org.sf.feeling.decompiler1542176660354/source/commons-dbutils-1.7-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+  <container id="crud-plus!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="H:/Java/J2SE-基础2017/PPT/JavaWeb基础/crud-plus/WebContent/WEB-INF/lib/c3p0-0.9.5.2.jar">
+      <source-attachment-path>C:/Users/Administrator/AppData/Local/Temp/.org.sf.feeling.decompiler1543799337148/source/c3p0-0.9.5.2-sources.jar</source-attachment-path>
+    </entry>
+    <entry id="H:/Java/J2SE-基础2017/PPT/JavaWeb基础/crud-plus/WebContent/WEB-INF/lib/commons-dbutils-1.7.jar">
+      <source-attachment-path>C:/Users/Administrator/AppData/Local/Temp/.org.sf.feeling.decompiler1542176660354/source/commons-dbutils-1.7-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

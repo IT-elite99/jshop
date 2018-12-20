@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1543372821925_1" label="maven" name="maven">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ssm01" type="4"/>
+<item elementID="=jshop" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=smvc" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1544068720269_9" label="study-anli" name="study-anli"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1540605734683_0" label="Window Working Set" name="Aggregate for window 1540605734682"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1543462324291_8" label="Multiple Working Sets" name="Aggregate:maven:spring:">
+<workingSet IMemento.internal.id="maven"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1543923086715_7" label="Multiple Working Sets" name="Aggregate:maven:spring:workspace:">
+<workingSet IMemento.internal.id="maven"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1544068287013_7" label="Multiple Working Sets" name="Aggregate:maven:workspace:">
+<workingSet IMemento.internal.id="maven"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1544538187876_7" label="Multiple Working Sets" name="Aggregate:maven:study-anli:">
+<workingSet IMemento.internal.id="maven"/>
+<workingSet IMemento.internal.id="study-anli"/>
+</workingSet>
+<mruList name="maven"/>
+</workingSetManager>

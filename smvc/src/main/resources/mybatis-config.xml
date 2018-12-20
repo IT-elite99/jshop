@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+
+  
+<configuration>
+	<properties resource="db.properties"></properties>
+	
+	<!-- MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为 -->
+	<settings>
+		<!-- 开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- 允许 JDBC 支持自动生成主键 -->
+		<setting name="useGeneratedKeys" value="true" />
+	</settings>
+
+	
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${dve.driverClass}"/>
+        <property name="url" value="${dve.url}"/>
+        <property name="username" value="${dve.user}"/>
+        <property name="password" value="${dve.password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <!-- 映射地址 -->
+  <mappers>
+    <mapper resource="userMapper.xml"/>
+  </mappers>
+</configuration>

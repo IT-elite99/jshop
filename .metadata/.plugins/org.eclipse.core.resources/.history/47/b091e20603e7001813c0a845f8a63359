@@ -1,0 +1,184 @@
+<%@page import="com.lixiang.util.InstUtils"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.lixiang.entity.User"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<%@ include file="/head.jsp"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>用户查询页面</title>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set value="${pageScope.request.contextPath }" var="ctx">
+	var ctx ="${ctx }";
+</c:set>
+</head>
+<body>
+
+	<div class="container">
+		<div class="title">用户查询</div>
+		<div class="content">
+			<div class="search">
+				<!--  查询条件回显 -->
+				<form action="ctx/user" method="post">
+					姓名:<input name="name"
+						value="${users.name}">
+
+					密码:<input name="password"
+						value="${users.password }">
+						<fmt:formatDate value="${users.starDate }" pattern="yyyy-MM-dd" var="starDate"/>
+						<fmt:formatDate value="${users.endDate }" pattern="yyyy-MM-dd" var="endDate"/>
+					出生年月:<input name="startDate" type="date"
+						value="${starDate }">-
+					<input name="${users.endDate }" type="date"
+						value="${endDate }">
+					<input type="submit" value="查询"> <input type="button"
+						value="清空" id="clear">
+
+				</form>
+
+			</div>
+
+			<form id="delForm" action="ctx/user">
+				<input name="oper" type="hidden" value="batchDel">
+				<div class="search">
+					<button type="button" id="batchDelBtn">批量删除</button>
+					<button type="button" id="addUserBtn">+新增</button>
+				</div>
+				<table>
+					<tr>
+						<th><input type="checkbox" id="checkAll"></th>
+						<th>ID</th>
+						<th>姓名</th>
+						<th>密码</th>
+						<th>出生年月</th>
+						<th>性别</th>
+						<th>爱好</th>
+						<th>操作</th>
+					</tr>
+					<c:if test="${empty users }">
+						<tr>
+							<td colspan="4">没有查询到数据...</td>
+						</tr>
+					</c:if>
+					<c:forEach items="${users }" var="user">
+						
+						<tr>
+								<td><input name="id" type="checkbox" value="${user.id }"></td>
+								<td>${user.id }</td>
+								<td>${user.name }</td>
+								<td>${user.password }</td>
+								<fmt:formatDate value="${user.birthday }" pattern="yyyy-MM-dd" var="birthday"/>
+								<td>${birthday }</td>
+								<td>user.getSex() == null || user.getSex() == 2 ? "保密" : (user.getSex() == 1 ? "男" : "女")%></td>
+								<td><c:out value="InstUtils.mapToString(user.getInst())"></c:out></td>
+								<td>
+									
+								<a href="${ctx }/user?oper=toUpdate&id=${user.id }%>">修改 </a>
+										| <a href="javascript:void(0);" class="delUser"
+										userId="${user.id }">删除 </a></td>
+								</tr>
+					</c:forEach>
+						
+					
+				</table>
+			</form>
+		</div>
+
+	</div>
+</body>
+
+<script type="text/javascript">
+	$(function(){
+		
+		$(".delUser").click(function(){
+			
+			//弹出一个确认框
+			
+			 if(confirm("确定要删除吗?删除后不能恢复...")){
+				 //真正的去删除
+				 var userId = $(this).attr("userId");
+				 //发送一个删除请求 
+				 //bom dom
+				 
+				 location.href='ctx+"/user"?oper=del&id='+userId;
+				 
+				 
+			 }
+			
+			
+		})
+		
+		//全选事件
+		$("#checkAll").click(function(){
+			
+			var checked = this.checked;
+			
+			if(checked==true){
+				checked="checked";
+			}
+			
+			$("input[name=id]").each(function(){
+			
+				this.checked=checked;
+			
+			});
+		})
+		
+		//监听批量删除按钮
+		$("#batchDelBtn").click(function(){
+			//1.判断是否选择了数据
+			var length = $("input[name=id]:checked").length;
+			
+			if(length==0){
+				alert("至少要选择一条数据！");
+				return;
+			}
+			
+			 if(confirm("确定要删除"+length+"条数据吗?删除后不能恢复...")){
+				 
+				 $("#delForm").submit();
+			 }
+			
+		})
+		
+		//监听新增按钮事件
+		$("#addUserBtn").click(function(){
+			location.href="ctx+'/user'?oper=toAdd";
+		})
+		
+		
+		$("#clear").click(function(){
+			$("input[name=name]").val("");			
+			$("input[name=startDate]").val("");			
+			$("input[name=endDate]").val("");
+			$("input[name=password]").val("");
+			
+		})
+		
+		//获取操作的结果 '''
+		
+		var result = '<%=session.getAttribute("operResult")%>';
+
+		if (result == 'true') {
+
+			openTip(true, '操作成功...');
+		}
+
+		if (result == 'false') {
+			openTip(false, '操作失败...');
+
+		}
+
+	})
+</script>
+
+
+	//删除操作结果
+	<c:remove var="${session.operResult }"/>
+</html>

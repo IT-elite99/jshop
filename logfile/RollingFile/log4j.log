@@ -1,0 +1,17 @@
+[DEBUG][2018/12/12 18:05:31403][org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:159)]
+==>  Preparing: select id, username, password, birthday from user where id = ? 
+ [DEBUG][2018/12/12 18:05:31540][org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:159)]
+==> Parameters: 1(Integer)
+ [DEBUG][2018/12/12 18:05:31674][org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:159)]
+<==      Total: 1
+ [DEBUG][2018/12/12 18:30:15449][org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:159)]
+==>  Preparing: select id, username, password, birthday from user 
+ [DEBUG][2018/12/12 18:30:15675][org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:159)]
+==> Parameters: 
+ [DEBUG][2018/12/12 18:35:49158][org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:159)]
+==>  Preparing: select id, username, password, birthday from user 
+ [DEBUG][2018/12/12 18:35:49338][org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:159)]
+==> Parameters: 
+ [DEBUG][2018/12/12 18:35:49388][org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:159)]
+<==      Total: 14
+ 
